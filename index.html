@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Paperwork Buddy SD explains confusing letters in plain language."
+    />
+    <title>Paperwork Buddy SD</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Paperwork Buddy SD</p>
+        <h1>Got a letter you don’t understand?</h1>
+        <p class="subtitle">Take a picture and we’ll explain it in plain language.</p>
+      </div>
+      <div class="font-controls" aria-label="Text size controls">
+        <span>Text size</span>
+        <button type="button" class="font-button" data-font-size="normal" aria-label="Use normal text size">A</button>
+        <button type="button" class="font-button" data-font-size="large" aria-label="Use large text size">A+</button>
+        <button type="button" class="font-button" data-font-size="x-large" aria-label="Use extra large text size">A++</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel intake-panel" aria-labelledby="intake-title">
+        <h2 id="intake-title">Start with your letter</h2>
+        <label class="upload-button" for="letter-file">
+          <span aria-hidden="true">📷</span>
+          <span>Take a photo of your letter</span>
+          <input id="letter-file" type="file" accept="image/*,.pdf" />
+        </label>
+        <p class="file-name" id="file-name">No file selected</p>
+
+        <div class="reading-level">
+          <h3>How should we explain it?</h3>
+          <div class="radio-group">
+            <label><input type="radio" name="reading-level" value="simple" /> Simple</label>
+            <label><input type="radio" name="reading-level" value="very_simple" checked /> Very simple</label>
+            <label><input type="radio" name="reading-level" value="friend" /> Like a friend</label>
+          </div>
+        </div>
+
+        <details class="settings">
+          <summary>Set up Gemini</summary>
+          <label for="api-key">Gemini API key</label>
+          <input id="api-key" type="password" autocomplete="off" placeholder="Paste your key for this demo" />
+          <p class="helper-text">Your key is stored only in this browser. A production app should use a server proxy.</p>
+        </details>
+
+        <button id="analyze-button" class="primary-button" type="button" disabled>Explain my letter</button>
+        <p class="disclaimer">Not legal or medical advice. Free human help is always listed with your results.</p>
+      </section>
+
+      <section id="status" class="status" role="status" aria-live="polite" hidden></section>
+      <section id="results" class="results" aria-labelledby="results-title" hidden>
+        <h2 id="results-title">What your letter means</h2>
+        <div id="results-content"></div>
+      </section>
+    </main>
+  </body>
+</html>
